@@ -2,7 +2,7 @@ import { Adapter, BroadcastOptions, Room } from "socket.io-adapter";
 import debugModule from "debug";
 import { randomId } from "./util";
 
-const debug = debugModule("socket.io-adapter");
+const debug = debugModule("socket.io-redis");
 const EMITTER_UID = "emitter";
 const DEFAULT_TIMEOUT = 5000;
 
