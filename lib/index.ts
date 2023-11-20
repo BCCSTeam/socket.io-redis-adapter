@@ -450,15 +450,15 @@ export class RedisAdapter extends Adapter {
               })
             );
           },
-          (arg) => {
-            debug("received acknowledgement with value %j", arg);
+          (...args) => {
+            debug("received acknowledgement with value %j", args);
 
             this.publishResponse(
               request,
               this.parser.encode({
                 type: RequestType.BROADCAST_ACK,
                 requestId: request.requestId,
-                packet: arg,
+                packet: args,
               })
             );
           }
@@ -517,7 +517,7 @@ export class RedisAdapter extends Adapter {
         }
 
         case RequestType.BROADCAST_ACK: {
-          ackRequest?.ack(response.packet);
+          ackRequest?.ack(...response.packet);
           break;
         }
       }
